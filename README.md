@@ -1,6 +1,6 @@
-# Container Testing — CHR30A Bitdefender Staging & Validation
+# Container Testing — Security Agent Staging & Validation
 
-Container staging and validation pipeline for deploying Bitdefender security agents on CHR30A home gateway hardware.
+Container staging and validation pipeline for deploying security agents on home gateway hardware.
 
 ---
 
@@ -16,15 +16,15 @@ This project validates the full container lifecycle for security agent deploymen
 Build Container Image
         │
         ▼
-Stage in Test Environment (CHR30A)
+Stage in Test Environment (Home Gateway)
         │
         ▼
 Run Validation Suite
   ├── Container integrity check (SHA256)
   ├── Service startup verification
-  ├── Bitdefender agent registration
+  ├── Security agent registration
   ├── Network traffic inspection active
-  └── DHS policy enforcement confirmed
+  └── Device security policy enforcement confirmed
         │
         ▼
 Promote to Production  OR  Rollback
@@ -38,7 +38,7 @@ Promote to Production  OR  Rollback
 |----|------|----------------|
 | CT-001 | Container image integrity | SHA256 hash matches build artifact |
 | CT-002 | Container startup time | < 30 seconds to ready state |
-| CT-003 | Bitdefender agent registration | Agent visible in management console |
+| CT-003 | Security agent registration | Agent visible in management console |
 | CT-004 | Traffic inspection active | Packets analyzed, no bypass |
 | CT-005 | Memory/CPU usage under load | Within hardware spec limits |
 | CT-006 | Container restart recovery | State restored after restart |
@@ -47,20 +47,9 @@ Promote to Production  OR  Rollback
 
 ---
 
-## Hardware Target
+## Target Hardware
 
-**CHR30A** — Verizon home gateway router
-- Containerized Linux environment
-- Bitdefender security agent deployment
-- DHS (Device Host Security) policy layer
-
----
-
-## Artifacts
-
-- `CHR30A_Bitdefender_Container_Staging_&_Validation.mp4` — screen recording of full staging workflow
-- Test result screenshots per sprint week
-- Defect logs with reproduction steps
+Home gateway router running a containerized Linux environment with security agent deployment and device security policy layer.
 
 ---
 
@@ -71,5 +60,5 @@ Docker          — container build and runtime
 Bitdefender     — security agent being validated
 Python          — test automation scripts
 Wireshark       — network traffic verification
-Shell scripts   — CI/CD pipeline automation
+Shell scripts   — pipeline automation
 ```
